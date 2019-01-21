@@ -1,0 +1,51 @@
+2019/1/21/월 ** 중요 **
+
+-- 톰캣 8버전 다운받고 셋팅
+-- abcdabdc
+
+* 웹 프로그래밍
+- 요청은 servlet이 받고, 응답은 jsp가 한다.
+- jsp도 하나의 클래스다. 인스턴스 존재
+- 미들웨어는 컨테이너 역할(톰캣)
+- servlet은 한 페이지 당 서블릿 하나
+- 프론트 컨트롤러 (컨트롤러 앞에 위치, 대문같은 기능) => servlet으로 만듬
+ : request url 을 분석해서 요청에 맞는 작업을 분배
+ : 서비스와 관계 有
+ : 서비스는 DAO와 관계 有
+ : 사용자의 모든 요청과 응답을 담당
+ : 하지만 실제 컨트롤은 그 뒤에 있는 컨트롤러가 담당**
+- 서버에 리스너 有,  요청 들어오면 리스너가 감지 > 프론트 컨트롤러에 넘김
+
+- get방식
+ : www.xxx.com?key=value&~~&~~
+ : URL?QueryString
+
+- Servlet (인터페이스)의 추상 메소드 5개
+1) getServletConfig()
+2) getServletInfo()
+----------------------------
+3) init()
+4) service() - doGet, doPost
+5) destroy
+------------service()메소드는 반드시 재정의 필수(우리의 역할)
+
+- Servlet을 상속받는 GenericServlet < HttpServlet
+- UserServlet extends HttpServlet
+- UserServlet(doGet, doPost)
+- IOC(Inversion Of Control) : 제어의 역행, 앞으로 객체는 컨테이너가 만들어서
+생명주기 관리함. 내가 생성X
+
+- 사용자 요청 들어옴 > 인스턴스 생성(serv
+let에 대한 인스턴스 생성)  > init 메소드 호출 // [여기까지 컨테이너 역할] 
+> 사용자 요청을 thread로 만듬(request, response 객체 생성) > service 메소드로 들어옴
+ > 사용자 응답 보냄, (thread die, thread 내의 request, response 객체도 죽음) 
+
+- 또 같은 url로 요청이 들어오면 thread생성부터 시작
+
+* 화면 분기 방식(jsp쪽으로 보냄)
+- response.sendRedirect (jsp가 url에 표시)
+- RequestDispatcher (url에 표시되지 않음) * , forward메소드 사용 (현업에서 주사용)
+: forward 하면서 servlet이 내부에서 request 들고 jsp 실행, jsp가 응답 ******모르겠당..
+
+- javascript
+: 도큐먼트(태그)의 오브젝트를 제어한다. (document object model)
