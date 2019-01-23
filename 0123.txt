@@ -61,4 +61,4 @@ var map = {key : [], key : [] }; (key, collection형 value)
 : append는 태그 요소가 누적되서 보여줌. remove는 이전 태그요소 다 지우고, empty는 데이터만 지움
 
 - servlet과 jsp의 차이?
-- 둘다 html, java 소스 작성 가능, 동일한 기능도 실행 가능 하지만 view단에선 jsp를 쓰고 back단에선 servlet을 쓰자고 한 것
+- 둘다 html(jsp), java(servlet) 소스 작성 가능, 동일한 기능도 실행 가능 하지만 view단에선 jsp를 쓰고 back단에선 servlet을 쓰자고 한 것

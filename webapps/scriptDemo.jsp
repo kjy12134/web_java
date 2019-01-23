@@ -64,10 +64,10 @@
 		}
 
 		/*jquery 사용 */
-		$(document).ready(function() {
+		$(document).ready(function() { // document실행 후 바로 javascript 실행하는 것. 만약 js코드를 body보다 위에 적은경우 ready를 써서 body가 실행 된 후에 js를 실행하도록 하는 것.
 			///////////////////////////////////////
 			$("#maker").change(function() {
-				var maker = $(this).val(); // select box(maker)에서 선택된 값 가져오기
+				var maker = $(this).val(); // select box(maker)에서 선택된 값 가져오기(value)
 
 				if (maker == 'benz') {
 					displayAry(objModel.benz);
