@@ -1,0 +1,64 @@
+2019/01/23/ 수
+* 프론트 위주
+
+- jstl, el
+: 프론트에서 출력할 때 쓰는 언어(in jsp)
+
+- EL
+: 데이터에 접근하기 위한 언어
+: ${객체이름.getter메소드의 이름(getName -> name)} **
+
+
+- JSTL(JSP Standard Tag Library)
+- core 라이브러리 (if문, for문(forEach))
+- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+- jstl로 선언한 변수는 el에서 쓸 수 있음
+
+
+
+- 프론트 컨트롤러 앞에 filter존재 (컨트롤러로 request보내기 전에 선행 작업) 
+cf. intercepter - (request, response전에(실행 전후에) 가로채서 컨트롤러로 태우지 않고(컨트롤러가 필요한지 아닌지 스스로 판단해서) response를 보냄)
+
+- jsp tag
+1) <%@ directive tag %>
+2) <%! 선언 태그  %>
+3) <%-- 주석태그 %>
+4) <% scriptlet tag (실제 개발소스, service역할) %>
+5) <%= 출력 태그  %>
+
+- <%@ include file = "abc.jsp" %>
+- 하나의 페이지에서 body에 뿌려지는 화면이 달라지는 경우, if-else문을 통해 include되는 file을 달라지게 하면 된다.
+
+- <%@ page import = "java 패키지" %>
+
+- jsp error 3가지
+1) translation time error - tag 오류
+2) compile time error - java 파일 > class 파일로 컴파일 시 생기는 오류 (자바문법오류, *찾기 어려움)
+3) runtime error - 실행 중 오류(코드 오류)
+
+
+--- html 태그 속성 : name, id
+1) name : 서버쪽으로 data 전송할때
+2) id : script에서 접근할 때
+
+
+-- javascript
+	<script type="text/javascript">
+		function displayPrint() {
+			
+		} 
+	</script>
+- return 타입이 없지만 리턴해줌
+- 문자열 변수 선언시 "", ''구분 없음
+var obj = {id:'jslim', pwd :'jslim'}; <!--객체타입, key:value -->
+var ary = [1, true, "A"]; <!-- 단일형 타입 아님 -->
+var map = {key : [], key : [] }; (key, collection형 value)
+
+- script 오류는 브라우저의 f12에서 확인해야한다
+
+- jquery 유용 함수
+- text(), html(), append(), remove(), empty()
+: append는 태그 요소가 누적되서 보여줌. remove는 이전 태그요소 다 지우고, empty는 데이터만 지움
+
+- servlet과 jsp의 차이?
+- 둘다 html, java 소스 작성 가능, 동일한 기능도 실행 가능 하지만 view단에선 jsp를 쓰고 back단에선 servlet을 쓰자고 한 것

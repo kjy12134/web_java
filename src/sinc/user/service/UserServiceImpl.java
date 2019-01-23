@@ -1,5 +1,7 @@
 package sinc.user.service;
 
+import java.util.List;
+
 import sinc.user.model.sql.UserDao;
 import sinc.user.model.sql.UserDaoImpl;
 
@@ -22,6 +24,10 @@ public class UserServiceImpl implements UserService {
 		return dao.joinRow(obj);
 	}
 
-	
+	@Override
+	public List<Object> boardList() {
+		// TODO Auto-generated method stub
+		return dao.boardSelectList();
+	}
 	
 }

@@ -3,6 +3,7 @@ package sinc.factory;
 import java.util.HashMap;
 import java.util.Map;
 
+import sinc.board.ctrl.ListCtrl;
 import sinc.ctrl.util.Controller;
 import sinc.main.ctrl.IndexCtrl;
 import sinc.user.ctrl.JoinCtrl;
@@ -23,6 +24,7 @@ public class BeanFactory {
 		map.put("/testWEB/logout.sinc",			new LogoutCtrl());
 		map.put("/testWEB/registForm.sinc",		new RegisterFormCtrl());
 		map.put("/testWEB/join.sinc",			new JoinCtrl());
+		map.put("/testWEB/board/list.sinc",		new ListCtrl());	
 	}
 
 	public static BeanFactory getInstance() {

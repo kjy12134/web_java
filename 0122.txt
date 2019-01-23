@@ -1,4 +1,5 @@
 2019/1/22/화
+* web
 
 * 순서
 - 웹에서 요청 (request) > 프론트 컨트롤러(servlet) > url을 factory에 등록(map구조, <url주소, 각 ctrl 객체>) 

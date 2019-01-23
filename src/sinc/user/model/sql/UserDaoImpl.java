@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
+import sinc.board.model.vo.BoardVO;
 import sinc.user.model.vo.UserVO;
 
 public class UserDaoImpl implements UserDao {
@@ -87,6 +90,40 @@ public class UserDaoImpl implements UserDao {
 			}
 		}
 		return flag;
+	}
+
+	@Override
+	public List<Object> boardSelectList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String selectSql = "SELECT * FROM FRM_BOARD_TBL";
+		List<Object> boards = new Vector<>();
+		
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASSWD);
+			pstmt = conn.prepareStatement(selectSql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardVO vo = new BoardVO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6));
+				boards.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return boards;
 	}
 
 }

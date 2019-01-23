@@ -13,21 +13,28 @@
 	<div align="center">섭섭이와 함께</div>
 	<hr />
 	<div align="right">
-		<c:if test="${loginUser == null }">
-			<form action="./login.sinc" method="post">
-				<label>아이디</label> 
-				<input type="text" name="id" placeholder="아이디">
-				<label>패스워드</label> 
-				<input type="text" name="pwd" placeholder="패스워드">
-				<button type="submit">로그인</button>
-				<a href="registForm.sinc">[가입]</a>
-			</form>
-		</c:if>
-		
-		<c:if test="${loginUser != null }">
+		<c:choose>
+			<c:when test="${loginUser==null}">
+				<form action="./login.sinc" method="post">
+					<label>아이디</label> <input type="text" name="id" placeholder="아이디">
+					<label>패스워드</label> <input type="text" name="pwd"
+						placeholder="패스워드">
+					<button type="submit">로그인</button>
+					<a href="registForm.sinc">[가입]</a>
+				</form>
+			</c:when>
+			<c:otherwise>
 			${loginUser.name}님 환영합니다.
 			<a href="logout.sinc">[로그아웃]</a>
-		</c:if>
+			</c:otherwise>
+		</c:choose>
 	</div>
+	
+	<%-- board --%>
+	<div align ="center">
+		<a href ="./board/list.sinc">목록보기</a>
+	</div>
+	
+	
 </body>
 </html>
