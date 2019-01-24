@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="sinc.test.mybatis">
+	<select id="loginRow" parameterType="user" resultType="user" flushCache="true" useCache="true">
+		SELECT	ID, PWD, NAME, POINT, DEPT
+		FROM	FRM_USERS_TBL 
+		WHERE	ID = #{id} AND PWD = #{pwd}
+	</select>
+	
+	<insert id="joinRow" parameterType="user">
+		INSERT	INTO FRM_USERS_TBL
+		VALUES	(#{id}, #{pwd}, #{name}, default, #{dept})
+	</insert>
+	
+	<select id="boardListRow" resultType="board">
+		SELECT	SEQ, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'RRRR-MM-DD') AS REGDATE, CNT
+		FROM	FRM_BOARD_TBL
+	</select>
+	<!-- WHERE SALARY <![CDATA[ > ]]> 100 --> <!-- char데이터로 파싱 -->
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

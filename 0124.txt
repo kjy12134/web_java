@@ -1,0 +1,24 @@
+2019/1/24	목 (json, MyBatis)
+* js의 목적
+- 받은 object를 이용해 프론트 페이지에서 컨트롤 하기 위한 것(CRUD)
+-ajax : response 객체가 없는 것. callback 함수를 통해 request처리
+- 자바에서 응답할 때 json형식으로 변환되서 웹에 뿌려줌(자바의 vo를 스크립트에서 사용가능 jsonObject형식으로)
+
+* MyBatis
+- DB conn 자동처리(config.xml), DAO 처리 (DQM(data query mapping) xml 파일)
+- sql 자바에서 작성 x, *.xml 파일에 sql 쿼리 작성
+- ORM 역할
+- ex) DAO에서 VO, Map, List 전달 > DQM sql 실행 > DB 접근 > result set을 vo, list, map 형식으로 리턴 (DML은 int형)
+
+ -
+ 	<typeAliases>
+		<typeAlias type="sinc.user.model.vo.UserVO" alias="user"/>
+	</typeAliases>
+ -- user 별칭 선언
+ 
+ 	<select id="loginRow" parameterType="user" resultType="user" flushCache="true" useCache="true"> => 입력데이터 타입 userVO, 출력데이터 타입 userVO
+		SELECT	ID, PWD, NAME, POINT, DEPT => setter 메소드 자동적용
+		FROM	FRM_USERS_TBL 
+		WHERE	ID = #{id} AND PWD = #{pwd} => getId() = id
+	</select>
+ 

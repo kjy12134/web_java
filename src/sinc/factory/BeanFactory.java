@@ -7,6 +7,7 @@ import sinc.board.ctrl.ListCtrl;
 import sinc.ctrl.util.Controller;
 import sinc.main.ctrl.IndexCtrl;
 import sinc.user.ctrl.JoinCtrl;
+import sinc.user.ctrl.JsonCtrl;
 import sinc.user.ctrl.LoginCtrl;
 import sinc.user.ctrl.LogoutCtrl;
 import sinc.user.ctrl.RegisterFormCtrl;
@@ -25,6 +26,7 @@ public class BeanFactory {
 		map.put("/testWEB/registForm.sinc",		new RegisterFormCtrl());
 		map.put("/testWEB/join.sinc",			new JoinCtrl());
 		map.put("/testWEB/board/list.sinc",		new ListCtrl());	
+		map.put("/testWEB/json.sinc",			new JsonCtrl());		
 	}
 
 	public static BeanFactory getInstance() {

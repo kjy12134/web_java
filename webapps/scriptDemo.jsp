@@ -27,6 +27,18 @@
 	<select name="model" id="model">
 		<option>선택하세요</option>
 	</select>
+	<p />
+	<p />
+	<p />
+	<li><input type="checkbox" id="allchk"> <label>전체선택/해제</label></li>
+	<hr />
+	<div id="area">
+		<li><input type="checkbox" name="box" value="a"><label>돈까스</label></li>
+		<li><input type="checkbox" name="box" value="b"><label>육개장</label></li>
+		<li><input type="checkbox" name="box" value="c"><label>사천면</label></li>
+		<li><input type="checkbox" name="box" value="d"><label>도삭면</label></li>
+		<li><input type="checkbox" name="box" value="e"><label>갈비탕</label></li>
+	</div>
 
 	<!-- script 선언  (하단부) -->
 	<script type="text/javascript"
@@ -104,6 +116,40 @@
 					$("#tbody").append(txt);
 				 */
 			})
+
+			////////////////////////////////////////
+			$("#allchk").click(function(e) {
+				if (this.checked) {
+					$("input[name='box']:checkbox").each(function() {
+						$(this).prop("checked", true);
+					})
+					
+				} else {
+					$("input[name='box']:checkbox").each(function() {
+						$(this).prop("checked", false);
+					})
+				}
+				//alert(this.checked); // $(this).checked (불가능), jquery 함수 호출
+			});
+			
+			//////////////////////////////////////
+			$("input[name='box']:checkbox").click(function() {
+				var flag = true;
+				
+				$("input[name='box']:checkbox").each(function() {
+					if ($(this).prop("checked") == false) {
+						flag = false;
+					}
+				});
+
+				if(flag) {
+					$("#allchk").prop("checked", true);	
+				} else {
+					$("#allchk").prop("checked", false);	
+				}
+			});
+			
+			
 		});
 	</script>
 </body>
